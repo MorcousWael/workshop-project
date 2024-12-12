@@ -4,11 +4,10 @@ header {
   align-items: center;
   max-width: 80%; /* Adjust to the desired width */
   margin: 20px auto 0; /* Centers the container */
-  padding: 0 20px; /* Adds spacing on smaller screens */
   box-sizing: border-box;
 }
 img {
-  width: 250px; /* Set the desired width */
+  width: 150px; /* Set the desired width */
   height: auto; /* Keeps the aspect ratio intact */
 }
 .logo {
@@ -16,62 +15,27 @@ img {
   display: flex;
   align-items: center;
 }
-
-.logo::before {
-  content: "2";
-  font-size: 120px;
-  font-weight: bold;
-  position: absolute;
-  left: 90%; /* Position "2" after the logo */
-  background: linear-gradient(90deg, #41b8ff, #6f8ded); /* Gradient color */
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.logo::after {
-  content: "5";
-  font-size: 120px;
-  font-weight: bold;
-  position: absolute;
-  left: 110%;
-  margin-left: 15px;
-  background: linear-gradient(90deg, #7a95ee, #d232c5);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  transform: translateY(18px) translateX(-20px); /* Move "5" down and left */
-}
-// todo add proper font style
-.years {
-  font-size: 12px; /* Smaller font size for 'years' */
-  font-weight: bold;
-  position: absolute;
-  top: 44%; /* Position "years" inside the "5" */
-  left: 120%; /* Adjust to fit inside the "5" */
-  color: rgb(3, 3, 3);
-}
 // Navigation Bar styling
 .navbar {
   display: flex; /* Flexbox for navbar items */
-  gap: 50px; /* Space between navbar items */
+  gap: 30px; /* Space between navbar items */
 }
 
 .navbar a {
   text-decoration: none; /* Remove underline */
   color: #333; /* Text color */
-  font-size: 40px; /* Font size for navbar links */
+  font-size: 18px; /* Font size for navbar links */
 }
 .auth-lang {
   display: flex;
   align-items: center;
-  gap: 45px; /* Space between the auth and language elements */
+  gap: 18px; /* Space between the auth and language elements */
 }
 
 .auth-lang a {
   text-decoration: none;
   color: #333;
-  font-size: 40px;
+  font-size: 18px;
 }
 
 .dropbtn {
@@ -110,5 +74,5 @@ img {
   margin-left: 5px;
   display: inline-block;
   color: #000000;
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
 }

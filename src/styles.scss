@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype"),
+    url("assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Define the Volkhov font */
+@font-face {
+  font-family: "Volkhov";
+  src: url("assets/fonts/Volkhov/Volkhov-Regular.ttf") format("truetype"),
+    url("assets/fonts/Volkhov/Volkhov-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
