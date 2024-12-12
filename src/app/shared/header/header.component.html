@@ -1,1 +1,33 @@
-<p>header works!</p>
+<header>
+  <!-- Logo Section -->
+  <div class="logo">
+    <img
+      src="../../../assets/images/link-dev-logo.png"
+      alt="Link development Logo"
+    />
+    <span class="years">years</span>
+  </div>
+
+  <!-- Navigation Links Section -->
+  <nav class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About us</a>
+    <a href="#">News</a>
+    <a href="#">Contact us</a>
+  </nav>
+
+  <!-- Authentication and Language Selector Section -->
+  <div class="auth-lang">
+    <a href="#">Login</a>
+    <a href="#">Sign up</a>
+    <div class="dropdown">
+      <a href="#" class="dropbtn" id="languageToggle"
+        >En <span class="arrow">&#9662;</span></a
+      >
+      <div class="dropdown-content">
+        <a href="#" onclick="changeLanguage('en')">En</a>
+        <a href="#" onclick="changeLanguage('ar')">Ar</a>
+      </div>
+    </div>
+  </div>
+</header>
