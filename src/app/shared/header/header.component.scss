@@ -1,9 +1,11 @@
 header {
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 80%; /* Adjust to the desired width */
-  margin: 20px auto 0; /* Centers the container */
+  max-width: 80vw; /* Adjust to the desired width */
+  min-height: 20vh;
+  margin: 0px auto; /* Centers the container */
   box-sizing: border-box;
 }
 img {
@@ -17,25 +19,30 @@ img {
 }
 // Navigation Bar styling
 .navbar {
-  display: flex; /* Flexbox for navbar items */
-  gap: 30px; /* Space between navbar items */
+  display: flex;
+  gap: 30px;
 }
 
 .navbar a {
-  text-decoration: none; /* Remove underline */
-  color: #333; /* Text color */
-  font-size: 18px; /* Font size for navbar links */
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
 }
 .auth-lang {
   display: flex;
   align-items: center;
-  gap: 18px; /* Space between the auth and language elements */
+  gap: 40px;
 }
 
 .auth-lang a {
   text-decoration: none;
   color: #333;
   font-size: 18px;
+}
+.sign-up {
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px black;
 }
 
 .dropbtn {
