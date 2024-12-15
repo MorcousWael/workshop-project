@@ -8,19 +8,69 @@
     <button class="category">Economics</button>
   </div>
 
-  <div class="news-container">
-    <div class="news-card" *ngFor="let news of newsList">
-      <img [src]="news.image" alt="News Image" class="news-image" />
+  <div
+    *ngIf="(showAllNews ? newsList : filteredNewsList).length > 0; else noNews"
+    class="news-container"
+  >
+    <div
+      class="news-card"
+      *ngFor="let news of showAllNews ? newsList : filteredNewsList"
+    >
+      <img [src]="news.urlToImage" alt="News Image" class="news-image" />
       <div class="news-content">
         <h3 class="news-title">{{ news.title }}</h3>
         <div class="news-meta">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <i class="fa-regular fa-heart"></i>
+          <i class="fa-solid fa-calendar-alt"></i>
+          <span class="news-date">{{
+            news.publishedDate | date : "mediumDate"
+          }}</span>
         </div>
-        <span class="news-category">{{ news.category }}</span>
+        <div class="news-category-share">
+          <span class="news-category">{{ getCategory(news.categoryID) }}</span>
+          <div class="news-actions">
+            <button (click)="toggleLove(news)" class="love-btn">
+              <i
+                class="fa"
+                [ngClass]="
+                  news.isLoved ? 'fa-solid fa-heart' : 'fa-regular fa-heart'
+                "
+              ></i>
+            </button>
+            <button (click)="togglePopup()" class="share-btn">
+              <i class="fa-solid fa-share-alt"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <button class="view-all-btn">View All News</button>
+  <ng-template #noNews>
+    <p class="no-news-message">No news available at the moment.</p>
+  </ng-template>
+
+  <!-- Toggle View All / View Less -->
+  <button class="view-all-btn" (click)="toggleViewAll()">
+    {{ showAllNews ? "Show Less News" : "View All News" }}
+  </button>
 </section>
+
+<!-- Popup for sharing -->
+<div *ngIf="showPopup" class="popup-overlay show" (click)="togglePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <div class="popup-icons">
+      <a href="https://facebook.com" target="_blank" class="facebook-icon">
+        <i class="fa-brands fa-facebook"></i> Facebook
+      </a>
+      <a href="https://twitter.com" target="_blank" class="twitter-icon">
+        <i class="fa-brands fa-twitter"></i> Twitter
+      </a>
+      <a
+        href="mailto:?subject=Check out this news!&body=Check out this news!"
+        class="email-icon"
+      >
+        <i class="fa-solid fa-envelope"></i> Email
+      </a>
+    </div>
+  </div>
+</div>

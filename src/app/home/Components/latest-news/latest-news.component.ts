@@ -1,56 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+  NewsServiceService,
+  NewsItem,
+} from '../../../core/Services/news-service/news-service.service';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-latest-news',
   imports: [CommonModule],
   templateUrl: './latest-news.component.html',
   styleUrls: ['./latest-news.component.scss'],
+  standalone: true,
 })
-export class LatestNewsComponent {
-  newsList = [
-    {
-      image: 'assets/news1.jpg',
-      title:
-        'Let us commit to do our part and advance the promise of equality, justice...',
-      date: 'Wed 12 Aug 2022',
-      category: 'Economics',
-      icon: 'calendar_today',
-    },
-    {
-      image: 'assets/news2.jpg',
-      title:
-        'In interactive live seminar, top lectures of the IHF present current topics...',
-      date: 'Wed 12 Aug 2022',
-      category: 'Sport',
-      icon: 'calendar_today',
-    },
-    {
-      image: 'assets/news3.jpg',
-      title: 'Libya to construct solar plant with Total Energies',
-      date: 'Wed 12 Aug 2022',
-      category: 'Technology',
-      icon: 'calendar_today',
-    },
-    {
-      image: 'assets/news4.jpg',
-      title: 'The 2nd IHF Wheelchair Handball Seminar begins this Saturday.',
-      date: 'Wed 12 Aug 2022',
-      category: 'Sport',
-      icon: 'calendar_today',
-    },
-    {
-      image: 'assets/news5.jpg',
-      title: 'President El Sisi Unveils “Egypt Vision 2030” Sustainable...',
-      date: 'Wed 12 Aug 2022',
-      category: 'Economics',
-      icon: 'calendar_today',
-    },
-    {
-      image: 'assets/news6.jpg',
-      title: 'COVID-19: get the latest updates, The MoF is leading work...',
-      date: 'Wed 12 Aug 2022',
-      category: 'Health',
-      icon: 'calendar_today',
-    },
-  ];
+export class LatestNewsComponent implements OnInit {
+  newsList: NewsItem[] = [];
+  filteredNewsList: NewsItem[] = [];
+  isPopupVisible = false;
+  isLoved = false;
+  showPopup: boolean = false; // Popup state
+  showAllNews: boolean = false; // Flag to toggle between filtered and all news
+
+  constructor(private newsService: NewsServiceService) {}
+
+  ngOnInit() {
+    this.newsService.getNews().subscribe({
+      next: (response) => {
+        console.log('API Response:', response);
+        this.newsList = response.News.map((news) => ({
+          ...news,
+          image: news.urlToImage,
+          category: this.getCategory(news.categoryID),
+        }));
+        this.filteredNewsList = this.newsList.filter(
+          (news) => news.showOnHomepage === 'yes'
+        );
+      },
+      error: (err) => console.error('Error fetching news:', err),
+    });
+  }
+
+  toggleViewAll() {
+    this.showAllNews = !this.showAllNews;
+  }
+
+  toggleLove(news: NewsItem) {
+    news.isLoved = !news.isLoved;
+  }
+
+  togglePopup() {
+    this.showPopup = !this.showPopup; // Toggle popup visibility
+  }
+
+  share(platform: string) {
+    console.log(`Sharing via ${platform}`);
+    this.togglePopup(); // Close popup after sharing
+  }
+
+  getCategory(categoryID: string): string {
+    const categories: { [key: string]: string } = {
+      '1': 'Technology',
+      '2': 'Sport',
+      '3': 'Health',
+      '4': 'Economics',
+    };
+    return categories[categoryID] || 'General';
+  }
 }

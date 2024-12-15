@@ -12,5 +12,6 @@ import { LatestNewsComponent } from './Components/latest-news/latest-news.compon
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  standalone: true,
 })
 export class HomeComponent {}
