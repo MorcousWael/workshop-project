@@ -1,28 +1,38 @@
 <div class="banner">
   <div class="banner-content">
-    <div class="small-title">Leading the Way</div>
-    <h1>25 Years of Business Growth</h1>
-    <p>
-      Link Development, the global technology solutions provider and an A15
-      company...
-    </p>
+    <div
+      class="small-title"
+      *ngIf="slides[activeSlideIndex]"
+      [style.color]="getColor(slides[activeSlideIndex].order)"
+    >
+      {{ slides[activeSlideIndex].category }}
+    </div>
+    <h1 *ngIf="slides[activeSlideIndex]">
+      {{ slides[activeSlideIndex].title }}
+    </h1>
+    <p *ngIf="slides[activeSlideIndex]">{{ slides[activeSlideIndex].brief }}</p>
     <div class="buttons">
       <button class="btn btn-primary">Find Out More</button>
       <button class="btn-circle"><span class="triangle"></span></button>
       <span class="play-demo">Play Demo</span>
     </div>
     <div class="slider-dots">
-      <div class="dot pinkish"></div>
-      <div class="separator"></div>
-      <div class="dot green"></div>
-      <div class="separator"></div>
-      <div class="dot orange"></div>
+      <div
+        *ngFor="let slide of slides; let i = index"
+        [ngClass]="{
+          dot: true,
+          active: i === activeSlideIndex
+        }"
+        [style.background-color]="getColor(slide.order)"
+        (click)="setActiveSlide(i)"
+      ></div>
     </div>
   </div>
   <div class="banner-image">
     <img
-      src="../../../../assets/images/placeholder.png"
-      alt="Person with Backpack"
+      *ngIf="slides[activeSlideIndex]"
+      [src]="slides[activeSlideIndex].imgUrl"
+      alt="Banner Image"
     />
   </div>
 </div>

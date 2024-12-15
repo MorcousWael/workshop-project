@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   NewsServiceService,
   NewsItem,
-} from '../../../core/Services/news-service/news-service.service';
+} from '../../../core/Services/news/news-service.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

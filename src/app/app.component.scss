@@ -18,4 +18,14 @@
   background-position: top right;
   z-index: -1; /* Pushes it behind other content */
   pointer-events: none; /* Prevents interaction */
+  animation: rotateImage 4s infinite linear;
+  transform-origin: 80% 40%;
+}
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0deg); /* Starting position */
+  }
+  100% {
+    transform: rotate(360deg); /* Full rotation */
+  }
 }
