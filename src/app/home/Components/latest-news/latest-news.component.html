@@ -1,1 +1,26 @@
-<p>latest-news works!</p>
+<section class="latest-news">
+  <h2 class="section-title">Top News</h2>
+  <div class="categories">
+    <button class="category active">All news</button>
+    <button class="category">Technology</button>
+    <button class="category">Sport</button>
+    <button class="category">Health</button>
+    <button class="category">Economics</button>
+  </div>
+
+  <div class="news-container">
+    <div class="news-card" *ngFor="let news of newsList">
+      <img [src]="news.image" alt="News Image" class="news-image" />
+      <div class="news-content">
+        <h3 class="news-title">{{ news.title }}</h3>
+        <div class="news-meta">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+        <span class="news-category">{{ news.category }}</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="view-all-btn">View All News</button>
+</section>

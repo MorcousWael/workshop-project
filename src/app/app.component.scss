@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  margin: 0px auto;
+  width: 90%; /* Full width of the container */
+  height: 100%; /* Full height of the container */
+  overflow: hidden;
+}
+.wrapper::before {
+  content: "";
+  position: absolute; /* Fixed to the viewport, not a parent container */
+  top: -20vh;
+  right: -20vw;
+  width: 80vw; /* 50% of viewport width */
+  height: 100vh; /* 50% of viewport height */
+  background-image: url("../assets/images/Decore.png");
+  background-repeat: no-repeat;
+  background-size: contain; /* Keeps image aspect ratio */
+  background-position: top right;
+  z-index: -1; /* Pushes it behind other content */
+  pointer-events: none; /* Prevents interaction */
+}

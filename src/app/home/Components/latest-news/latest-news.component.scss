@@ -1,0 +1,119 @@
+$primary-color: #007bff;
+$secondary-color: #f4f4f4;
+$text-color: #333;
+$hover-color: #f8f9fa;
+
+.latest-news {
+  margin: 0 auto;
+  width: 90%;
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: $text-color;
+  }
+
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+
+    .category {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      background-color: $secondary-color;
+      color: $text-color;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+
+      &.active,
+      &:hover {
+        background-color: $primary-color;
+        color: #fff;
+      }
+    }
+  }
+
+  .news-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+
+    .news-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 350px;
+      width: calc(33.333% - 1.5rem); // Default: 3 cards per row
+      min-width: 250px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+
+      .news-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .news-content {
+        padding: 1rem;
+
+        .news-title {
+          font-size: 1rem;
+          font-weight: bold;
+          color: $text-color;
+          margin-bottom: 0.5rem;
+        }
+
+        .news-meta {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: #777;
+          font-size: 0.9rem;
+
+          mat-icon {
+            font-size: 1.1rem;
+            color: $primary-color;
+          }
+        }
+
+        .news-category {
+          display: inline-block;
+          margin-top: 0.5rem;
+          padding: 0.3rem 0.7rem;
+          font-size: 0.8rem;
+          background-color: $secondary-color;
+          border-radius: 15px;
+          color: $text-color;
+        }
+      }
+    }
+  }
+
+  .view-all-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.7rem 1.5rem;
+    background-color: #ff7b00;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: #e56f00;
+    }
+  }
+}

@@ -1,3 +1,10 @@
+@mixin repeat($character, $n) {
+  $c: "";
+  @for $i from 1 through $n {
+    $c: $c + $character;
+  }
+  content: $c;
+}
 body {
   margin: 0;
   padding: 0;
@@ -6,29 +13,48 @@ body {
 .banner {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 80vh;
+  align-items: center; /* Centers elements inside the banner */
+  justify-content: space-between; /* Distribute space between elements in the banner */
+  height: 85vh;
   width: 80vw;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .banner-content {
+  display: flex;
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: space-evenly; /* Distribute space between child elements vertically */
   max-width: 50%;
+  height: 100%; /* Make it take the full height of the parent */
   z-index: 2;
 }
 
 .banner-content .small-title {
-  font-size: 1.2rem;
-  color: #34495e;
-  margin-bottom: 0.5rem;
+  font: normal normal bold 20px/30px Poppins;
+  letter-spacing: 0px;
+  color: #f215b6;
+  text-transform: uppercase;
+  opacity: 1;
 }
 
 .banner-content h1 {
-  font-size: 3rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+  position: relative;
+  font: normal normal bold 75px/89px Volkhov;
+  letter-spacing: -2.68px;
+  color: #181e4b;
+  opacity: 1;
 }
+
+// .banner-content h1::after {
+//   content: "";
+//   position: absolute;
+//   top: 30px; /* Adjust position */
+//   left: 50px; /* Adjust offset */
+//   height: 10px;
+//   width: 200px; /* Adjust length */
+//   background-color: #ff66b2; /* Pink color */
+// }
 
 .banner-content p {
   font-size: 1.25rem;
@@ -81,7 +107,7 @@ body {
 
 .play-demo {
   font-size: 1rem;
-  color: #7f8c8d;
+  color: #616161;
   margin-left: 1rem;
   align-self: center;
 }
@@ -97,36 +123,43 @@ body {
 }
 
 .slider-dots {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .slider-dots .dot {
-  width: 10px;
-  height: 10px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .dot.pinkish {
-  background: var(--pinkish-color);
+  background-color: #a249e7;
 }
 
 .dot.green {
-  background: var(--green-color);
+  background-color: #6bd425;
 }
 
 .dot.orange {
-  background: var(--orange-color);
+  background-color: #ff9f45;
+}
+.dot {
+  width: 30px; // Dot size
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 10px; // Space between the dots and separators
 }
 
-.slider-dots .separator {
-  width: 10px;
-  height: 2px;
-  background: #000;
+.separator::before {
+  @include repeat(".", 7); // Creates 7 dots
+  display: inline-block; // Ensures the dots are inline
+  font-size: 24px; // Increases the dot size if needed
+  color: #000; // Adjust dot color if necessary
+  letter-spacing: 8px; // Adds spacing between dots
+  text-align: center; // Ensures the text is centered
+  transform: translatey(-5px);
 }
